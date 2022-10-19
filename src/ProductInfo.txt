@@ -1,5 +1,0 @@
-Meat:Beef
-Meat:Pork
-Meat:Mutton
-Produce:Tomato
-Produce:Onion
