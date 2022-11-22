@@ -1,0 +1,10 @@
+matplotlib
+sklearn
+seaborn
+tensorflow
+pandas
+numpy
+PIL
+pickle
+torch
+xgboost
