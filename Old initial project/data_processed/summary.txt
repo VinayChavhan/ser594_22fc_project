@@ -1,0 +1,39 @@
+Quantitative Columns : 
+
+gre : 
+min  : 220
+max : 800
+median : 580.0
+
+gpa : 
+min  : 2.26
+max : 4.0
+median : 3.395
+
+rank : 
+min  : 1
+max : 4
+median : 2.0
+
+
+Applicants total : 
+min  : 0.0
+max : 72676.0
+median : 3279.0
+
+Admissions total : 
+min  : 0.0
+max : 35815.0
+median : 2011.0
+
+Qualitative Columns : 
+
+StageID : 
+Number of Categories :['lowerlevel' 'MiddleSchool' 'HighSchool']
+Most Frequent category :lowerlevel
+Least Frequent category :HighSchool
+
+ParentschoolSatisfaction : 
+Number of Categories :['Good' 'Bad']
+Most Frequent category :Good
+Least Frequent category :Bad
