@@ -1,0 +1,5 @@
+https://www.kaggle.com/code/shawon10/wafer-defect-classification-by-deep-learning
+
+Total data size is 2GB, file name is LSWMD.pkl, due to git hub size limit, I did not upload it here
+
+Please download it and keep in data_original directory
