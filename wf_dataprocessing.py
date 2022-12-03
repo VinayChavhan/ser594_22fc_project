@@ -88,10 +88,30 @@ def dataprocessing():
 
     wf_visualization.visualize_defect_frequency(tol_wafers, df_withlabel, defined_withpattern,defined_nonpattern)
 
+    df['failureNum'] = defined_df.failureType
+    df['trainTestNum'] = defined_df.trianTestLabel
+    mapping_type = {'Center': 0, 'Donut': 1, 'Edge-Loc': 2, 'Edge-Ring': 3, 'Loc': 4, 'Random': 5, 'Scratch': 6,
+                    'Near-full': 7, 'none': 8}
+    mapping_traintest = {'Training': 0, 'Test': 1}
+    df = df.replace({'failureNum': mapping_type, 'trainTestNum': mapping_traintest})
+
+    df_nonpattern = df[(df['failureNum'] == 8)]
+    df_withlabel = df[(df['failureNum'] >= 0) & (df['failureNum'] <= 8)]
+    df_withlabel = df_withlabel.reset_index()
+
+    df1 = defined_df[defined_df['failureType'] == 'none']
+
+    defined_df1 = defined_df[defined_df["failureType"] != 'none']
+    df_del = df1[::7]
+    defined_df = pd.concat([defined_df1, df_del])
 
     x, y = subwafer(defined_df, 26, 26)
     x1, y1 = subwafer(defined_df, 25, 27)
     x2, y2 = subwafer(defined_df, 30, 34)
+    x3, y3 = subwafer(defined_df, 29, 26)
+    x4, y4 = subwafer(defined_df, 27, 25)
+    x5, y5 = subwafer(defined_df, 39, 37)
+    x8, y8 = subwafer(defined_df, 44, 41)
     print(x.shape, y.shape, x1.shape, y1.shape, x2.shape, y2.shape)
 
     faulty_case = np.unique(y)
@@ -100,11 +120,23 @@ def dataprocessing():
     rgb_x0 = rgb_sw(x1)  # about 8s each line.
     rgb_x1 = rgb_sw(x2)
 
+    rgb_x2 = rgb_sw(x3)
+    rgb_x3 = rgb_sw(x4)
+
+    rgb_x4 = rgb_sw(x5)
+    rgb_x5 = rgb_sw(x8)
+
     resized_x0 = resize(rgb_x0)
     resized_x1 = resize(rgb_x1)
 
-    resized_wm = torch.cat([resized_x0, resized_x1])
-    label_wm = np.concatenate((y1, y2))  # concatenate To use all data.
+    resized_x2 = resize(rgb_x2)
+    resized_x3 = resize(rgb_x3)
+
+    resized_x4 = resize(rgb_x4)
+    resized_x5 = resize(rgb_x5)
+
+    resized_wm = torch.cat([resized_x0, resized_x1, resized_x2, resized_x3, resized_x4, resized_x5])
+    label_wm = np.concatenate((y1, y2, y3, y4, y5, y8))
 
     resized_wm_2d = np.reshape(resized_wm, (len(resized_wm), -1))
 
