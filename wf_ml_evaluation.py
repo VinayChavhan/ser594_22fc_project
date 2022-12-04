@@ -120,7 +120,7 @@ def model_CNN(train_X, train_Y, test_X, test_Y):
     print('Simple CNN Cross validation score : {:.4f}'.format(np.mean(results)))
 
 def model_GredientBoost(trainnew1, train_Y1, testnew1, test_Y1):
-    print("*****ADA Boost********")
+    print("*****Gradient Boost Boost********")
     clf_ada = GradientBoostingClassifier(n_estimators=5)
     clf_ada.fit(trainnew1, train_Y1)
     y_pred = clf_ada.predict(testnew1)
@@ -276,8 +276,6 @@ def ml_evaluation():
     model_KNeighborsClassifier(train_X, train_Y, test_X, test_Y, k=4)
     model_SVM(train_X, train_Y, test_X, test_Y)
 
-    # train_X1 = train_X.numpy()
-    # test_X1 = test_X.numpy()
     trainnew1 = train_X.reshape(12131, 2028)
     testnew1 = test_X.reshape(3033, 2028)
 
@@ -286,7 +284,7 @@ def ml_evaluation():
     model_GredientBoost(trainnew1, train_Y, testnew1, test_Y)
     model_BaggingEnsembleModel(trainnew1, train_Y, testnew1, test_Y)
 
-    # model_CNN(train_X, train_Y, test_X, test_Y)
+    model_CNN(train_X, train_Y, test_X, test_Y)
 
 
 

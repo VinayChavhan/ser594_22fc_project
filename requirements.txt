@@ -8,3 +8,4 @@ PIL
 pickle
 torch
 xgboost
+Keras
